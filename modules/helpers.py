@@ -21,6 +21,7 @@ def load_txt(file):
     return domains
 
 
+# Remove elements that doesnt have the current domain name
 def get_urls(domain, list_of_urls):
     final_list = []
     for i in list_of_urls:
