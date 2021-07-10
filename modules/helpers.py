@@ -1,13 +1,14 @@
 from typing import final
 from modules.constants import HOME_DIR
 import os
+from datetime import datetime
 
 # Create a folder structure that looks like this /recon/domain/ and return the path to it
 
 
 def make_directory(domain):
-    folder = '{home_dir}/recon/{target}'.format(
-        home_dir=HOME_DIR, target=domain)
+    today = datetime.today().strftime('%Y-%m-%d')
+    folder = f'{HOME_DIR}/recon/{domain}/{today}/'
     os.makedirs(folder)
     return folder
 
@@ -23,15 +24,13 @@ def load_txt(file):
 
 # Remove elements that doesnt have the current domain name
 def get_urls(domain, list_of_urls):
-    final_list = []
-    for i in list_of_urls:
-        if domain in i:
-            final_list.append(i)
+    final_list = [i for i in list_of_urls if domain in i]
     return final_list
 
 
 # Loads different lists unify them and remove duplicates
 def remove_duplicates_from_lists(*lists):
+
     final_result = set()
 
     for list_ in lists:
@@ -39,3 +38,9 @@ def remove_duplicates_from_lists(*lists):
             final_result.add(item)
     
     return final_result
+
+
+def save_to_file(set_of_subdomains):
+    with open('alive-subdomains.txt', 'w') as file:
+        for subdomain in set_of_subdomains:
+            file.write(subdomain + '\n')

@@ -3,3 +3,6 @@ misc/__pycache__/
 modules/__pycache__/
 scanners/__pycache__/
 subdomains/__pycache__/
+alive-subdomains.txt
+test.py
+test.txt

@@ -11,7 +11,7 @@ from urllib3.exceptions import NewConnectionError
 def run(subdomains):
     start = time.time()
 
-    alive_subdomains = []
+    alive_subdomains = set()
 
     def test_for_HTTP(subdomain):
 
@@ -20,7 +20,7 @@ def run(subdomains):
             resp = requests.get(HTTP_url, timeout=3, allow_redirects=False)
 
             if resp.status_code != 408:
-                alive_subdomains.append(HTTP_url)
+                alive_subdomains.add(HTTP_url)
 
         except ConnectionRefusedError:
             pass
@@ -40,7 +40,7 @@ def run(subdomains):
             resp = requests.get(HTTPS_url, timeout=3, allow_redirects=False)
 
             if resp.status_code != 408:
-                alive_subdomains.append(HTTPS_url)
+                alive_subdomains.add(HTTPS_url)
 
         except ConnectionRefusedError:
             pass
