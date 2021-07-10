@@ -20,8 +20,7 @@ def run():
         unified_domains = remove_duplicates_from_lists(sublist3r_subs, assetf_subs, wayback_subs)
 
         live_subdomains = httprobe.run(unified_domains)
-        file_location = directory+live_subdomains
-        live_subdomains_file = save_to_file(file_location)
+        live_subdomains_file = save_to_file(directory, live_subdomains)
         aquatone.run(live_subdomains_file, directory)
         
 
