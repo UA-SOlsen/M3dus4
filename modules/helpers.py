@@ -36,7 +36,7 @@ def remove_duplicates_from_lists(*lists):
     for list_ in lists:
         for item in list_:
             final_result.add(item)
-    
+
     return final_result
 
 
@@ -44,3 +44,4 @@ def save_to_file(folder, set_of_subdomains):
     with open(f'{folder}/alive-subdomains.txt', 'w') as file:
         for subdomain in set_of_subdomains:
             file.write(subdomain + '\n')
+    return f'{folder}/alive-subdomains.txt'

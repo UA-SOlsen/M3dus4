@@ -1,8 +1,10 @@
 import requests
 import json
 
+
 def run(domain):
-    crtsh_query = 'https://crt.sh/?q={domain}&output=json'.format(domain=domain)
+    crtsh_query = 'https://crt.sh/?q={domain}&output=json'.format(
+        domain=domain)
     response = requests.get(crtsh_query)
     content = response.content.decode('UTF-8')
     json_data = json.loads(content)
