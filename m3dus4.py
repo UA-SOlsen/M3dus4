@@ -11,15 +11,19 @@ def run():
     domains = input.validate_input()
 
     for domain in domains:
+        directory = make_directory(domain)
+
         sublist3r_subs = sublist3r.run(domain)
         assetf_subs = assetfinder.run(domain)
         wayback_subs = waybackurls.run(domain)
         
         unified_domains = remove_duplicates_from_lists(sublist3r_subs, assetf_subs, wayback_subs)
 
-    live_subdomains = httprobe.run(unified_domains)
-    live_subdomains_file = save_to_file(live_subdomains)
-    
+        live_subdomains = httprobe.run(unified_domains)
+        file_location = directory+live_subdomains
+        live_subdomains_file = save_to_file(file_location)
+        aquatone.run(live_subdomains_file, directory)
+        
 
 
 
