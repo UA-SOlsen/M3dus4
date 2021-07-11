@@ -9,9 +9,13 @@ from datetime import datetime
 def make_directory(domain):
     today = datetime.today().strftime('%Y-%m-%d')
     folder = f'{HOME_DIR}/recon/{domain}/{today}/'
-    os.makedirs(folder)
-    return folder
-
+    try:
+        os.makedirs(folder)
+        return folder
+    except FileExistsError:
+        print('Directory already exists')
+        return folder
+    
 
 # Loads a txt file and return a list of the strings contained in it
 def load_txt(file):
