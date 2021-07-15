@@ -3,9 +3,9 @@ from modules.constants import HOME_DIR
 import os
 from datetime import datetime
 
+
+
 # Create a folder structure that looks like this /recon/domain/ and return the path to it
-
-
 def make_directory(domain):
     today = datetime.today().strftime('%Y-%m-%d')
     folder = f'{HOME_DIR}/recon/{domain}/{today}/'

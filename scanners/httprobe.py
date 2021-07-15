@@ -6,6 +6,9 @@ from requests import sessions
 from requests import exceptions
 from requests.exceptions import ConnectTimeout
 from urllib3.exceptions import NewConnectionError
+import logging
+
+logging.basicConfig(filename='httprobe.log', level=logging.DEBUG)
 
 
 def run(subdomains):
@@ -58,5 +61,5 @@ def run(subdomains):
         test_for_HTTPS(sub)
 
     end = time.time()
-    print('Runtime of httprobe is {}'.format(end - start))
+    logging.log('Runtime of httprobe is {}'.format(end - start))
     return alive_subdomains

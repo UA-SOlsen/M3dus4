@@ -3,6 +3,9 @@ import modules.input as input
 from subdomains import assetfinder, sublist3r, omnisint
 from misc import logo, waybackurls
 from scanners import httprobe, aquatone
+import logging
+
+logging.basicConfig(filename='main.log', level=logging.DEBUG)
 
 
 def run():
@@ -18,6 +21,7 @@ def run():
         assetf_subs = assetfinder.run(domain)
         wayback_subs = waybackurls.run(domain)
 
+        logging.debug(omnisint_subs, sublist3r_subs, assetf_subs, wayback_subs)
         unified_domains = remove_duplicates_from_lists(
             sublist3r_subs, assetf_subs, wayback_subs, omnisint_subs)
 
