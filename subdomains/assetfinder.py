@@ -6,8 +6,10 @@ def run(domain):
     process = subprocess.run(
         ['assetfinder', '--subs-only', '{}'.format(domain)], capture_output=True, text=True)
     output = process.stdout.split('\n')
-    try:
+
+    if not output:
+        return False
+    else:
         subdomains = get_urls(domain, output)
         return subdomains
-    except Exception:
-        return None
+ 

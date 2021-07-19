@@ -12,6 +12,7 @@ logging.basicConfig(filename='httprobe.log', level=logging.DEBUG)
 
 
 def run(subdomains):
+    print('starting httprobe')
     start = time.time()
 
     alive_subdomains = set()
@@ -61,5 +62,4 @@ def run(subdomains):
         test_for_HTTPS(sub)
 
     end = time.time()
-    logging.log('Runtime of httprobe is {}'.format(end - start))
     return alive_subdomains

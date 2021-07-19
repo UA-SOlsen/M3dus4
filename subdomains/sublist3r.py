@@ -13,5 +13,7 @@ def run(domain):
         if subdomains:
             subdomains.pop(0)
             return subdomains
+        else:
+            return False
     except subprocess.SubprocessError:
-        return None
+        return False

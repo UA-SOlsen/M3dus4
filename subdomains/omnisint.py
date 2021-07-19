@@ -8,5 +8,5 @@ def run(domain):
         response = requests.get(omnisint_query)
         return response.json()
     except requests.ConnectionError:
-        return None
+        return False
     

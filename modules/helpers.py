@@ -49,3 +49,4 @@ def save_to_file(folder, set_of_subdomains):
         for subdomain in set_of_subdomains:
             file.write(subdomain + '\n')
     return f'{folder}/alive-subdomains.txt'
+

@@ -25,4 +25,4 @@ def run(domain):
 
         return subdomains
     except requests.ConnectionError:
-        return None
+        return False
